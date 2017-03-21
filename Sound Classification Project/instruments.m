@@ -76,3 +76,32 @@ dim = min([v1 p1 g1]);
 
 % The data matrix
 D = [G(1:dim,:),P(1:dim,:),V(1:dim,:)];
+
+%% Clustering data using diffusion on weighted graph
+% Sigma value, pivotal to the clustering algorithm
+sigma = 0.1;
+
+% To avoid small values
+D = D/10;
+
+% The size of the data matrix
+[row, col] = size(D);
+
+% Graph Laplacian
+L = zeros(col, col);
+
+% Calculate the weight of each link in the graph
+for i = 1:col
+   for j = 1:col
+       L(i, j) = exp(-(norm(D(:,i) - D(:, j))^2)/(2*sigma^2));
+   end
+end
+
+for i = 1:col
+    L(i, i) = 0;
+    for j = 1:col
+       if j ~= i
+           L(i, i) = L(i, i) - L(i, j);
+       end
+    end
+end
