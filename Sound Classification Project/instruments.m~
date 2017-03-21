@@ -1,0 +1,16 @@
+%% Read in audio file
+clear ; close all; clc
+soundFiles = dir('soundfiles/Guitar/*.wav'); 
+numfiles = length(soundFiles)
+mydata = cell(1, numfiles);
+
+for k = 1:numfiles
+  fname = strcat('soundfiles/Guitar/', soundFiles(k).name);
+  [mydata{k}, Fs] = audioread(fname); 
+end
+
+minDim = size;
+
+for k = 1:numfiles
+    
+end
