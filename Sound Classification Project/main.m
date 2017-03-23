@@ -1,12 +1,12 @@
 clear ; close all; clc
 numCategories = 3;
 %% Read in Saxophone Audio Files
-soundFiles = dir('soundfiles/sax/*.wav'); 
+soundFiles = dir('../../soundfiles/sax/*.wav'); 
 numsfiles = length(soundFiles);
 mydata = cell(1, numsfiles);
 
 for k = 1:numsfiles
-  fname = strcat('soundfiles/sax/', soundFiles(k).name);
+  fname = strcat('../../soundfiles/sax/', soundFiles(k).name);
   [mydata{k}, Fs] = audioread(fname);
 end
 
@@ -24,12 +24,12 @@ for k = 1:numsfiles
 end
 
 %% Read in Violin Audio 
-soundFiles = dir('soundfiles/vio/*.wav'); 
+soundFiles = dir('../../soundfiles/vio/*.wav'); 
 numvfiles = length(soundFiles);
 mydata = cell(1, numvfiles);
 
 for k = 1:numvfiles
-  fname = strcat('soundfiles/vio/', soundFiles(k).name);
+  fname = strcat('../../soundfiles/vio/', soundFiles(k).name);
   [mydata{k}, Fs] = audioread(fname); 
 end
 
@@ -47,12 +47,12 @@ for k = 1:numvfiles
 end
 
 %% Read in Piano Audio 
-soundFiles = dir('soundfiles/pia/*.wav'); 
+soundFiles = dir('../../soundfiles/pia/*.wav'); 
 numpfiles = length(soundFiles);
 mydata = cell(1, numpfiles);
 
 for k = 1:numpfiles
-  fname = strcat('soundfiles/pia/', soundFiles(k).name);
+  fname = strcat('../../soundfiles/pia/', soundFiles(k).name);
   [mydata{k}, Fs] = audioread(fname); 
 end
 
