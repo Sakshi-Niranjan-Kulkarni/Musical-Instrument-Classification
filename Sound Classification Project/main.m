@@ -78,9 +78,32 @@ dim = min([v1 p1 s1]);
 % The data matrix
 D = [S(1:dim,:),P(1:dim,:),V(1:dim,:)];
 
+F = abs(fft(D));
+
+F = F(1:(dim+1)/2,:);
+F = sortrows(F, 'descend');
+
+plot(F);
+%% Separating hyperplane
+
+
+% PCA
+% [row, col] = size(D);
+% avg = zeros(row, 1);
+% for i = 1:col
+%     avg = avg + (1/col)*D(:,i);
+% end
+
+% for i = 1:col
+%     D(:,i) = D(:,i) - avg;
+% end
+
+% hold on;
+% hold off;
+
 %% Normal k-means++ clustering
-D = D';
-v = kmeans(D, 7);
+% D = D';
+% v = kmeans(D, 7);
 
 
 %% Diffusion on weighted graph
